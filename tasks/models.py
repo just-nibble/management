@@ -4,10 +4,10 @@ from employees.models import Employee
 # Create your models here.
 
 
-class Task(model.Models):
+class Task(models.Model):
     state = [
-        (pending, "pending"), (assigned, "assigned"),
-        (incomplete, "incomplete"), (complete, "complete")
+        ("pending", "pending"), ("assigned", "assigned"),
+        ("incomplete", "incomplete"), ("complete", "complete")
     ]
 
     task_name = models.CharField(max_length=300, verbose_name="task name")
@@ -22,7 +22,7 @@ class Task(model.Models):
     date_assigned = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     date_completed = models.CharField(max_length=300)
-    status = models.CharField(choices=state, max_length=20, default=pending)
+    status = models.CharField(choices=state, max_length=20, default="pending")
 
     def get_date_completed(self):
         if self.status == "complete":
@@ -30,4 +30,4 @@ class Task(model.Models):
 
     def save(self, *args, **kwargs):
         self.get_date_completed()
-        super(Task, *args, **kwargs)
+        super(Task, self).save(*args, **kwargs)
