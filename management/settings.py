@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # user created
     'employees.apps.EmployeesConfig',
     'tasks.apps.TasksConfig',
-    'reports.apps.ReportConfig'
+    'reports.apps.ReportsConfig',
+    'users.apps.UsersConfig',
+
+    # 3rd party
 ]
 
 MIDDLEWARE = [
